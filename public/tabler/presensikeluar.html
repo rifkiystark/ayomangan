@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta3
+* @link https://tabler.io
+* Copyright 2018-2021 The Tabler Authors
+* Copyright 2018-2021 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Dashboard - Tabler - Premium and Open Source dashboard template with
+      responsive and high quality UI.
+    </title>
+    <!-- CSS files -->
+    <link href="./dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="./dist/css/demo.min.css" rel="stylesheet" />
+
+    <style>
+      .page-body {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="wrapper">
+      <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar-menu"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1
+            class="
+              navbar-brand navbar-brand-autodark
+              d-none-navbar-horizontal
+              pe-0 pe-md-3
+            "
+          >
+            <a href=".">
+              <img
+                src="./static/logo.svg"
+                width="110"
+                height="32"
+                alt="Tabler"
+                class="navbar-brand-image"
+              />
+            </a>
+          </h1>
+          <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item d-none d-md-flex me-3">
+              <div class="btn-list">
+                <a
+                  href="https://github.com/sponsors/codecalm"
+                  class="btn btn-outline-white"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                  <!-- Download SVG icon from http://tabler-icons.io/i/apps -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="6" height="6" rx="1" />
+                    <rect x="4" y="14" width="6" height="6" rx="1" />
+                    <rect x="14" y="14" width="6" height="6" rx="1" />
+                    <line x1="14" y1="7" x2="20" y2="7" />
+                    <line x1="17" y1="4" x2="17" y2="10" />
+                  </svg>
+                  SekolaCloud Apps
+                </a>
+              </div>
+            </div>
+
+            <div class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link d-flex lh-1 text-reset p-0"
+                data-bs-toggle="dropdown"
+                aria-label="Open user menu"
+              >
+                <span
+                  class="avatar avatar-sm"
+                  style="background-image: url(./static/avatars/000m.jpg)"
+                ></span>
+                <div class="d-none d-xl-block ps-2">
+                  <div>Paweł Kuna</div>
+                  <div class="mt-1 small text-muted">UI Designer</div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <a href="#" class="dropdown-item">Set status</a>
+                <a href="#" class="dropdown-item">Profile & account</a>
+                <a href="#" class="dropdown-item">Feedback</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="navbar-expand-md">
+        <div class="collapse navbar-collapse" id="navbar-menu">
+          <div class="navbar navbar-light">
+            <div class="container-xl">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="./index.html">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <circle cx="12" cy="13" r="2" />
+                        <line x1="13.45" y1="11.55" x2="15.5" y2="9.5" />
+                        <path d="M6.4 20a9 9 0 1 1 11.2 0z" />
+                      </svg>
+                    </span>
+                    <span class="nav-link-title"> Dashboard </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./index.html">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                      </svg>
+                    </span>
+                    <span class="nav-link-title"> Pegawai </span>
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#navbar-base"
+                    data-bs-toggle="dropdown"
+                    role="button"
+                    aria-expanded="false"
+                  >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
+                        <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+                        <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                      </svg>
+                    </span>
+                    <span class="nav-link-title"> Master Data </span>
+                  </a>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-menu-columns">
+                      <div class="dropdown-menu-column">
+                        <a class="dropdown-item" href="./empty.html"> Agama </a>
+                        <a class="dropdown-item" href="./accordion.html">
+                          Diklat
+                        </a>
+                        <a class="dropdown-item" href="./blank.html"> Gapok </a>
+                        <a class="dropdown-item" href="./buttons.html">
+                          Golongan
+                        </a>
+                        <a class="dropdown-item" href="./cards-masonry.html">
+                          Pendidikan
+                        </a>
+                      </div>
+                      <div class="dropdown-menu-column">
+                        <a class="dropdown-item" href="./navigation.html">
+                          Jabatan Struktural
+                        </a>
+                        <a class="dropdown-item" href="./charts.html">
+                          Jabatan Fungsional
+                        </a>
+                        <a class="dropdown-item" href="./pagination.html">
+                          Jabatan Tambahan
+                        </a>
+                        <a class="dropdown-item" href="./skeleton.html">
+                          UPT
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#navbar-extra"
+                    data-bs-toggle="dropdown"
+                    role="button"
+                    aria-expanded="false"
+                  >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <circle cx="12" cy="12" r="9" />
+                        <polyline points="12 7 12 12 15 15" />
+                      </svg>
+                    </span>
+                    <span class="nav-link-title"> Presensi </span>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="./activity.html">
+                      Data Presensi
+                    </a>
+                    <a class="dropdown-item" href="./gallery.html"> Setting </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-wrapper">
+        <div class="container-xl">
+          <!-- Page title -->
+          <div class="page-header d-print-none">
+            <div class="row align-items-center">
+              <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">Halaman Presensi</div>
+                <h2 class="page-title">Pulang</h2>
+              </div>
+              <!-- Page title actions -->
+            </div>
+          </div>
+        </div>
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="alert alert-success w-100" role="alert">
+              <div class="btn-list">
+                <a href="#" class="btn btn-success">Pulang</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    <a href="./docs/index.html" class="link-secondary"
+                      >Documentation</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="./license.html" class="link-secondary">License</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      href="https://github.com/tabler/tabler"
+                      target="_blank"
+                      class="link-secondary"
+                      rel="noopener"
+                      >Source code</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      href="https://github.com/sponsors/codecalm"
+                      target="_blank"
+                      class="link-secondary"
+                      rel="noopener"
+                    >
+                      <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon text-pink icon-filled icon-inline"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                          d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+                        />
+                      </svg>
+                      Sponsor
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    Copyright &copy; 2021
+                    <a href="." class="link-secondary">Tabler</a>. All rights
+                    reserved.
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      href="./changelog.html"
+                      class="link-secondary"
+                      rel="noopener"
+                      >v1.0.0-beta3</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div
+      class="modal modal-blur fade"
+      id="modal-report"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New report</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="example-text-input"
+                placeholder="Your report name"
+              />
+            </div>
+            <label class="form-label">Report type</label>
+            <div class="form-selectgroup-boxes row mb-3">
+              <div class="col-lg-6">
+                <label class="form-selectgroup-item">
+                  <input
+                    type="radio"
+                    name="report-type"
+                    value="1"
+                    class="form-selectgroup-input"
+                    checked
+                  />
+                  <span
+                    class="form-selectgroup-label d-flex align-items-center p-3"
+                  >
+                    <span class="me-3">
+                      <span class="form-selectgroup-check"></span>
+                    </span>
+                    <span class="form-selectgroup-label-content">
+                      <span class="form-selectgroup-title strong mb-1"
+                        >Simple</span
+                      >
+                      <span class="d-block text-muted"
+                        >Provide only basic data needed for the report</span
+                      >
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="col-lg-6">
+                <label class="form-selectgroup-item">
+                  <input
+                    type="radio"
+                    name="report-type"
+                    value="1"
+                    class="form-selectgroup-input"
+                  />
+                  <span
+                    class="form-selectgroup-label d-flex align-items-center p-3"
+                  >
+                    <span class="me-3">
+                      <span class="form-selectgroup-check"></span>
+                    </span>
+                    <span class="form-selectgroup-label-content">
+                      <span class="form-selectgroup-title strong mb-1"
+                        >Advanced</span
+                      >
+                      <span class="d-block text-muted"
+                        >Insert charts and additional advanced analyses to be
+                        inserted in the report</span
+                      >
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="mb-3">
+                  <label class="form-label">Report url</label>
+                  <div class="input-group input-group-flat">
+                    <span class="input-group-text">
+                      https://tabler.io/reports/
+                    </span>
+                    <input
+                      type="text"
+                      class="form-control ps-0"
+                      value="report-01"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="mb-3">
+                  <label class="form-label">Visibility</label>
+                  <select class="form-select">
+                    <option value="1" selected>Private</option>
+                    <option value="2">Public</option>
+                    <option value="3">Hidden</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Client name</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Reporting period</label>
+                  <input type="date" class="form-control" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div>
+                  <label class="form-label">Additional information</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a
+              href="#"
+              class="btn btn-link link-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </a>
+            <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Create new report
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Libs JS -->
+    <script src="./dist/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <!-- Tabler Core -->
+    <script src="./dist/js/tabler.min.js"></script>
+    <script>
+      function showTime() {
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+
+        if (h >= 4 && h <= 9) {
+          document.getElementById("greetings").innerText = "Selamat Pagi";
+        } else if (h > 9 && h <= 14) {
+          document.getElementById("greetings").innerText = "Selamat Siang";
+        } else if (h > 14 && h <= 17) {
+          document.getElementById("greetings").innerText = "Selamat Sore";
+        } else {
+          document.getElementById("greetings").innerText = "Selamat Malam";
+        }
+
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+
+        var time = h + ":" + m + ":" + s + " WIB";
+        document.getElementById("clock").innerText = time;
+
+        setTimeout(showTime, 1000);
+      }
+
+      showTime();
+    </script>
+  </body>
+</html>
