@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Place;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
+
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
         $data['active'] = 'dashboard';
+        $data['menu'] = Menu::count();
+        $data['place'] = Place::count();
         return view('dashboard', $data);
     }
     public function place()
     {
         $data['active'] = 'place';
-        $data['places'] = Place::all();
+        $data['places'] = Place::with(['images'])->get();
         return view('place', $data);
     }
     public function addTempat(Request $request)
@@ -67,7 +73,27 @@ class AdminController extends Controller
 
     public function deleteTempat(Request $request, $id)
     {
-        Place::find($id)->delete();
+        $place = Place::with(['images', 'menus', 'menus.images'])->find($id);
+
+        foreach ($place->images as $image) {
+            $path = public_path() . "/image/" . $image->name;
+            unlink($path);
+
+            $image->delete();
+        }
+
+        foreach ($place->menus as $menu) {
+            foreach ($menu->images as $image) {
+                $path = public_path() . "/image/" . $image->name;
+                unlink($path);
+
+                $image->delete();
+            }
+
+            $menu->delete();
+        }
+
+        $place->delete();
 
         Alert::success('Berhasil', 'Berhasil Menghapus Data');
 
@@ -78,7 +104,8 @@ class AdminController extends Controller
     {
         $data['active'] = 'place';
         $data['placeId'] = $id;
-        $data['menus'] = Menu::all();
+        $data['place'] = Place::find($id);
+        $data['menus'] = Menu::with(['images'])->where('place_id', $id)->get();
         return view('menu', $data);
     }
 
@@ -98,7 +125,7 @@ class AdminController extends Controller
 
         Alert::success('Berhasil', 'Berhasil Menambah Data');
 
-        return redirect('menu/'.$place_id);
+        return redirect('menu/' . $place_id);
     }
 
     public function editMenu(Request $request)
@@ -117,16 +144,74 @@ class AdminController extends Controller
 
         Alert::success('Berhasil', 'Berhasil Memperbarui Data');
 
-        return redirect('menu/'.$place_id);
+        return redirect('menu/' . $place_id);
     }
 
     public function deleteMenu(Request $request, $place_id, $id)
     {
-        Menu::find($id)->delete();
+        $menu = Menu::with(['images'])->find($id);
+        foreach ($menu->images as $image) {
+            $path = public_path() . "/image/" . $image->name;
+            unlink($path);
+
+            $image->delete();
+        }
+
+        $menu->delete();
 
         Alert::success('Berhasil', 'Berhasil Menghapus Data');
 
-        return redirect('menu/'.$place_id);
+        return redirect('menu/' . $place_id);
     }
 
+    public function deleteImage(Request $request, $place_id, $id)
+    {
+        $image = Image::find($id);
+
+        $path = public_path() . "/image/" . $image->name;
+        unlink($path);
+
+        $image->delete();
+
+
+        Alert::success('Berhasil', 'Berhasil Menghapus Data');
+
+        if ($place_id == -1) {
+            return redirect('place');
+        } else {
+            return redirect('menu/' . $place_id);
+        }
+    }
+
+    public function addImage(Request $request)
+    {
+        $type = $request->type;
+        $id = $request->id;
+        if ($type == 1) {
+            $typeName = "place";
+        } else {
+            $typeName = "menu";
+        }
+        $file = $request->file('file');
+        $tujuan_upload = 'image'; //nama folder
+        $uuid = (string) Str::uuid();
+        $filename = $typeName . '-' . $uuid . '-' . $id . '.' . $file->getClientOriginalExtension();
+        $file->move($tujuan_upload, $filename);
+
+        $image = new Image();
+        $image->type = $type;
+        $image->name = $filename;
+        if ($type == 1) {
+            $image->place_id = $id;
+        } else {
+            $image->menu_id = $id;
+        }
+        $image->save();
+
+        if ($type == 1) {
+            return redirect('place');
+        } else {
+            return redirect('menu/' . $id);
+        }
+    }
 }

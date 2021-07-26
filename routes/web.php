@@ -18,15 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
-Route::get('/place', [AdminController::class, 'place'])->middleware(['auth'])->name('place');
-Route::post('/add-place', [AdminController::class, 'addTempat'])->middleware(['auth'])->name('add-place');
-Route::post('/edit-place', [AdminController::class, 'editTempat'])->middleware(['auth'])->name('edit-place');
-Route::get('/delete-place/{id}', [AdminController::class, 'deleteTempat'])->middleware(['auth'])->name('delete-place');
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth','is_admin'])->name('dashboard');
+Route::get('/place', [AdminController::class, 'place'])->middleware(['auth','is_admin'])->name('place');
+Route::post('/add-place', [AdminController::class, 'addTempat'])->middleware(['auth','is_admin'])->name('add-place');
+Route::post('/edit-place', [AdminController::class, 'editTempat'])->middleware(['auth','is_admin'])->name('edit-place');
+Route::get('/delete-place/{id}', [AdminController::class, 'deleteTempat'])->middleware(['auth','is_admin'])->name('delete-place');
 
-Route::get('/menu/{id}', [AdminController::class, 'menu'])->middleware(['auth'])->name('menu');
-Route::post('/add-menu', [AdminController::class, 'addMenu'])->middleware(['auth'])->name('add-menu');
-Route::post('/edit-menu', [AdminController::class, 'editMenu'])->middleware(['auth'])->name('edit-menu');
-Route::get('/delete-menu/{place_id}/{id}', [AdminController::class, 'deleteMenu'])->middleware(['auth'])->name('delete-menu');
+Route::get('/menu/{id}', [AdminController::class, 'menu'])->middleware(['auth','is_admin'])->name('menu');
+Route::post('/add-menu', [AdminController::class, 'addMenu'])->middleware(['auth','is_admin'])->name('add-menu');
+Route::post('/edit-menu', [AdminController::class, 'editMenu'])->middleware(['auth','is_admin'])->name('edit-menu');
+Route::get('/delete-menu/{place_id}/{id}', [AdminController::class, 'deleteMenu'])->middleware(['auth','is_admin'])->name('delete-menu');
 
+Route::post('/add-image', [AdminController::class, 'addImage'])->middleware(['auth','is_admin'])->name('add-image');
+Route::get('/delete-image/{place_id}/{id}', [AdminController::class, 'deleteImage'])->middleware(['auth','is_admin'])->name('delete-image');
 require __DIR__.'/auth.php';

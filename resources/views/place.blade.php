@@ -8,8 +8,8 @@
       <div class="row align-items-center">
         <div class="col">
           <!-- Page pre-title -->
-          <div class="page-pretitle">Halaman Admin</div>
-          <h2 class="page-title">Dashboard</h2>
+          <div class="page-pretitle">Halaman Tempat</div>
+          <h2 class="page-title">Daftar Tempat</h2>
         </div>
         <!-- Page title actions -->
       </div>
@@ -89,6 +89,7 @@
                         <th>Telepon</th>
                         <th>Alamat</th>
                         <th>Deskripsi</th>
+                        <th>Gambar</th>
                         <th class="w-1"></th>
                       </tr>
                     </thead>
@@ -106,13 +107,48 @@
                         <td class="text-muted">
                           {{ $place->description }}
                         </td>
+                        <td class="text-muted">
+                          @foreach($place->images as $image)
+                          <a href="{{ url('delete-image/-1/'.$image->id) }}"> <img src="{{ asset('image/'.$image->name) }}" style="width: 100px; height: auto;">
+                          </a>
+                          @endforeach
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#modal-image{{ $place->id }}">Tambah Gambar</a>
+                        </td>
                         <td>
-                          <a href="#">Lihat</a>
+                          <a href="{{ url('menu/'.$place->id) }}">Lihat</a>
                           <a href="#" data-bs-toggle="modal" data-bs-target="#modal-edit{{ $place->id }}">Edit</a>
                           |
                           <a href="#" class="text-danger"  data-bs-toggle="modal" data-bs-target="#modal-delete{{ $place->id }}">Hapus</a>
                         </td>
                       </tr>
+                      <div class="modal modal-blur fade" id="modal-image{{ $place->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Modal Image</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="{{ url('add-image') }}" method="post" id="addImage{{ $place->id }}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $place->id }}">
+                                <input type="hidden" name="type" value="1">
+
+                                <div class="mb-3">
+                                  <label class="form-label">Gambar</label>
+                                  <input type="file" value="" name="file" class="form-control" placeholder="" required>
+                                </div>
+
+
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
+                              <button type="submit" class="btn btn-primary" form="addImage{{ $place->id }}">Perbarui</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <div class="modal modal-blur fade" id="modal-edit{{ $place->id }}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -121,7 +157,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="{{ url('edit-place') }}" method="post" id="editForm">
+                              <form action="{{ url('edit-place') }}" method="post" id="editForm{{ $place->id }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $place->id }}">
                                 <div class="mb-3">
@@ -149,7 +185,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
-                              <button type="submit" class="btn btn-primary" form="editForm">Perbarui</button>
+                              <button type="submit" class="btn btn-primary" form="editForm{{ $place->id }}">Perbarui</button>
                             </div>
                           </div>
                         </div>

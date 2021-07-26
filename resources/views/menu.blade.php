@@ -8,8 +8,12 @@
       <div class="row align-items-center">
         <div class="col">
           <!-- Page pre-title -->
-          <div class="page-pretitle">Halaman Admin</div>
-          <h2 class="page-title">Dashboard</h2>
+          <div class="page-pretitle">Halaman Menu</div>
+          <h2 class="page-title">Nama Tempat : {{$place->name}}</h2>
+        </div>
+        <div class="col text-end">
+          <!-- Page pre-title -->
+          <a href="{{ url('place') }}" class="btn btn-ghost-warning">Kembali</a>
         </div>
         <!-- Page title actions -->
       </div>
@@ -80,6 +84,7 @@
                         <th>Nama</th>
                         <th>Harga</th>
                         <th>Deskripsi</th>
+                        <th>Gambar</th>
                         <th class="w-1"></th>
                       </tr>
                     </thead>
@@ -93,6 +98,13 @@
                         <td class="text-muted">
                           {{ $menu->description }}
                         </td>
+                        <td class="text-muted">
+                          @foreach($menu->images as $image)
+                          <a href="{{ url('delete-image/'.$placeId.'/'.$image->id) }}"> <img src="{{ asset('image/'.$image->name) }}" style="width: 100px; height: auto;">
+                          </a>
+                          @endforeach
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#modal-image{{ $menu->id }}">Tambah Gambar</a>
+                        </td>
                         <td>
                           <a href="#">Lihat</a>
                           <a href="#" data-bs-toggle="modal" data-bs-target="#modal-edit{{ $menu->id }}">Edit</a>
@@ -100,6 +112,35 @@
                           <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#modal-delete{{ $menu->id }}">Hapus</a>
                         </td>
                       </tr>
+                      <div class="modal modal-blur fade" id="modal-image{{ $menu->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Modal Image</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="{{ url('add-image') }}" method="post" id="addImage{{ $menu->id }}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $menu->id }}">
+                                <input type="hidden" name="place_id" value="{{$placeId}}">
+                                <input type="hidden" name="type" value="2">
+
+                                <div class="mb-3">
+                                  <label class="form-label">Gambar</label>
+                                  <input type="file" value="" name="file" class="form-control" placeholder="" required>
+                                </div>
+
+
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
+                              <button type="submit" class="btn btn-primary" form="addImage{{ $menu->id }}">Perbarui</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <div class="modal modal-blur fade" id="modal-edit{{ $menu->id }}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -108,7 +149,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="{{ url('edit-menu') }}" method="post" id="editForm">
+                              <form action="{{ url('edit-menu') }}" method="post" id="editForm{{ $menu->id }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $menu->id }}">
                                 <input type="hidden" name="place_id" value="{{$placeId}}">
@@ -130,7 +171,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
-                              <button type="submit" class="btn btn-primary" form="editForm">Perbarui</button>
+                              <button type="submit" class="btn btn-primary" form="editForm{{ $menu->id }}">Perbarui</button>
                             </div>
                           </div>
                         </div>

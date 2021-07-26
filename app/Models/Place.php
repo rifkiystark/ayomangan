@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Place extends Model
 {
     use HasFactory;
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
 }

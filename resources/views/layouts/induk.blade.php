@@ -137,7 +137,7 @@
         pe-0 pe-md-3
         ">
           <a href="{{ url('/') }}">
-            <img src="{{ asset('tabler/static/logo.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image" />
+            AyoMangan
           </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">

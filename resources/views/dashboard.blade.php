@@ -50,19 +50,19 @@
               <div class="row align-items-center">
                 <div class="col-auto">
                   <span class="bg-blue text-white avatar">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                    <!-- Download SVG icon from http://tabler-icons.io/i/map-pin -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <circle cx="12" cy="7" r="4" />
-                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                      <circle cx="12" cy="11" r="3" />
+                      <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
                     </svg>
                   </span>
                 </div>
                 <div class="col">
                   <div class="font-weight-medium" style="font-size: 20px">
-                    123
+                    {{$place}}
                   </div>
-                  <div class="text-muted">Pengguna</div>
+                  <div class="text-muted">Tempat</div>
                 </div>
               </div>
             </div>
@@ -74,27 +74,28 @@
               <div class="row align-items-center">
                 <div class="col-auto">
                   <span class="bg-yellow text-white avatar">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/users -->
+                    <!-- Download SVG icon from http://tabler-icons.io/i/report-analytics -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                      <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                      <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                      <rect x="9" y="3" width="6" height="4" rx="2" />
+                      <path d="M9 17v-5" />
+                      <path d="M12 17v-1" />
+                      <path d="M15 17v-3" />
                     </svg>
                   </span>
                 </div>
                 <div class="col">
                   <div class="font-weight-medium" style="font-size: 20px">
-                    123
+                    {{$menu}}
                   </div>
-                  <div class="text-muted">Pegawai</div>
+                  <div class="text-muted">Menu</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -102,7 +103,8 @@
 </div>
 
 <script>
-    const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
   function showTime() {
     var date = new Date();
     var h = date.getHours(); // 0 - 23
