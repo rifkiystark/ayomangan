@@ -205,6 +205,7 @@ class AdminController extends Controller
             $image->place_id = $id;
         } else {
             $image->menu_id = $id;
+            $id = Menu::find($id)->place_id;
         }
         $image->save();
 
