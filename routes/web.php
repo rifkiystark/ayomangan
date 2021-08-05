@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/restaurants', [HomeController::class, 'restaurants']);
+Route::get('/menus', [HomeController::class, 'menus']);
+Route::get('/menuresto/{id}', [HomeController::class, 'menuresto']);
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth','is_admin'])->name('dashboard');
 Route::get('/place', [AdminController::class, 'place'])->middleware(['auth','is_admin'])->name('place');
